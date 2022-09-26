@@ -353,5 +353,9 @@
 			"});"
 		],
 		"description": "Jest test suite"
+	},
+	"Ternary": {
+		"prefix": "ternary",
+		"body": "${1:condition} ? ${2:ifTrue} : ${3:ifFalse}"
 	}
 }
