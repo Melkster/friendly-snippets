@@ -1,4 +1,12 @@
 {
+	"begin": {
+		"prefix": "begin",
+		"body": [
+			"\\begin{${1:environment}}",
+			"\t$2",
+			"\\end{$1}"
+		]
+	},
 	"item": {
 		"prefix": "item",
 		"body": "\n\\item ",

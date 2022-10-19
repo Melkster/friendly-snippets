@@ -1,3 +1,7 @@
+In this fork I've modified some of the snippets more to my liking, including making LaTeX snippet prefixes more verbose, and adding some global ones.
+
+---
+
 # Friendly Snippets
 
 Snippets collection for a set of different programming languages for faster development.

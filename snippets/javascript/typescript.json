@@ -1,12 +1,8 @@
 {
 	"Constructor": {
-		"prefix": "ctor",
+		"prefix": "constructor",
 		"body": [
-			"/**",
-			" *",
-			" */",
-			"constructor() {",
-			"\tsuper();",
+			"constructor($1) {",
 			"\t$0",
 			"}"
 		],
@@ -24,21 +20,30 @@
 		"description": "Class Definition"
 	},
 	"Interface Definition": {
-		"prefix": "iface",
+		"prefix": "interface",
 		"body": [
 		  "interface ${1:name} {",
 		  "\t$0",
 		  "}"
 		],
 		"description": "Interface Definition"
-	},	
+	},
+	"Method Definition": {
+		"prefix": "method",
+		"body": [
+			"${1:name}($2) {",
+			"\t$0",
+			"}"
+		],
+		"description": "Method Definition"
+	},
 	"Public Method Definition": {
 		"prefix": "public method",
 		"body": [
 			"/**",
 			" * ${1:name}",
 			" */",
-			"public ${1:name}() {",
+			"public ${1:name}($2) {",
 			"\t$0",
 			"}"
 		],
@@ -47,14 +52,14 @@
 	"Private Method Definition": {
 		"prefix": "private method",
 		"body": [
-			"private ${1:name}() {",
+			"private ${1:name}($2) {",
 			"\t$0",
 			"}"
 		],
 		"description": "Private Method Definition"
 	},
 	"Import external module.": {
-		"prefix": "import statement",
+		"prefix": "import",
 		"body": [
 			"import { $0 } from \"${1:module}\";"
 		],
@@ -72,7 +77,7 @@
 		"description": "Property getter"
 	},
 	"Log to the console": {
-		"prefix": "log",
+		"prefix": ["log", "cl", "print"],
 		"body": [
 			"console.log($1);",
 			"$0"
@@ -199,12 +204,30 @@
 		"prefix": "ifelse",
 		"body": [
 			"if (${1:condition}) {",
-			"\t$0",
+			"\t$2",
 			"} else {",
-			"\t",
+			"\t$0",
 			"}"
 		],
 		"description": "If-Else Statement"
+	},
+	"Else-If Statement": {
+		"prefix": "else if",
+		"body": [
+			"else if (${1:condition}) {",
+			"\t$0",
+			"}"
+		],
+		"description": "Else-If Statement"
+	},
+	"Else Statement": {
+		"prefix": "else",
+		"body": [
+			"else {",
+			"\t$0",
+			"}"
+		],
+		"description": "Else Statement"
 	},
 	"New Statement": {
 		"prefix": "new",
@@ -246,15 +269,24 @@
 		"description": "Do-While Statement"
 	},
 	"Try-Catch Statement": {
-		"prefix": "trycatch",
+		"prefix": ["try", "trycatch"],
 		"body": [
 			"try {",
+			"\t$1",
+			"} catch (${2:error}) {",
 			"\t$0",
-			"} catch (${1:error}) {",
-			"\t",
 			"}"
 		],
 		"description": "Try-Catch Statement"
+	},
+	"Catch Statement": {
+		"prefix": "catch",
+		"body": [
+			"catch (${1:error}) {",
+			"\t$0",
+			"}"
+		],
+		"description": "Catch Statement"
 	},
 	"Set Timeout Function": {
 		"prefix": "settimeout",
@@ -278,5 +310,48 @@
 			"//#endregion"
 		],
 		"description": "Folding Region End"
+},
+	"Lambda function": {
+		"prefix": "lambda multiline",
+		"body": [
+			"$3($1) => {",
+			"\t$2",
+			"}"
+		],
+		"description": "Lambda function with multiple lines"
+	},
+	"Lambda function return": {
+		"prefix": "lambda oneline",
+		"body": [
+			"($1) => ($2)"
+		],
+		"description": "Lambda function with single return"
+	},
+	"Jest test": {
+		"prefix": "test",
+		"body": [
+			"test(\"${1:description}\",$0 () => {",
+			"\texpect(${2:false})$3",
+			"});"
+		],
+		"description": "Jest test"
+	},
+	"Jest test it": {
+		"prefix": "it",
+		"body": [
+			"it(\"${1:description}\",$0 () => {",
+			"\texpect(${2:false})$3",
+			"});"
+		],
+		"description": "Jest it test"
+	},
+	"Jest describe": {
+		"prefix": "describe",
+		"body": [
+			"describe(\"${1:suite description}\", () => {",
+			"\t$0",
+			"});"
+		],
+		"description": "Jest test suite"
 	}
 }
