@@ -133,7 +133,7 @@
     "description": "Insert task list with 5 tasks"
   },
   "Checkbox list": {
-    "prefix": "checkbox",
+    "prefix": "ch",
     "body": ["- [${2: }] $1"],
     "description": "Check box list"
   },
